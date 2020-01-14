@@ -1,0 +1,69 @@
+_____________________________________________
+First you need to connect to postgres and sanity test your connection to SaleCoWD, execute the following SQL statements
+
+psql -h 129.105.208.229 -U  YOUR_NETID -d postgres
+
+\c saleco_dw
+
+
+SELECT * FROM information_schema.tables
+WHERE table_schema = 'public';
+
+
+
+______________________________________________
+
+1. Wrtie and execute the SQL command to list the total sales by region and customer. Your output shoudl be sorted by region and customer
+
+
+SELECT REG_ID, S.CUS_CODE, SUM(SALE_UNITS*SALE_PRICE) AS TOTSALES
+FROM DWDAYSALESFACT S JOIN DWCUSTOMER C ON S.CUS_CODE = C.CUS_CODE
+GROUP BY REG_ID, S.CUS_CODE
+ORDER BY REG_ID, S.CUS_CODE;
+
+
+
+
+2. Wrtie and execute the SQL command to list the total sales by customer, month and product.
+
+
+
+
+3. Wrtie and execute the SQL command to list the total sales by customer and by product 
+
+
+
+
+
+
+4. Wrtie and execute the SQL command to list the total sales by month and product category. Your output should be sorted by month and product category.
+
+
+
+SELECT TM_MONTH, P_CATEGORY, SUM(SALE_UNITS*SALE_PRICE) AS TOTSALES
+FROM DWDAYSALESFACT S JOIN DWPRODUCT P ON S.P_CODE = P.P_CODE JOIN DWTIME T ON S.TM_ID = T.TM_ID
+GROUP BY TM_MONTH, P_CATEGORY
+ORDER BY  TM_MONTH, P_CATEGORY;
+
+
+5. Wrtie and execute the SQL command to list the number of product sales (number of rows) and total sales by month.Your output should be sorted by month.
+
+
+
+
+6. Wrtie and execute the SQL command to list the number of product sales (number of rows) and total sales by month and product category. Your output should be sorted by month and product category.
+
+
+
+
+
+7. Wrtie and execute the SQL command to list the number of product sales (number of rows) and total sales by month, product category and product. Your output should be sorted by month, product category and product.
+
+
+
+
+
+
+
+
+
